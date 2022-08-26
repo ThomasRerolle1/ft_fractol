@@ -1,12 +1,56 @@
-NAME = test
+NAME = fractol
 
-SRCS = main.c
+SRCS = main.c\
+       srcs/init.c\
+       srcs/parse.c\
+       srcs/hook.c\
+       srcs/clear.c\
+       srcs/fractal.c
 
 OBJ = $(SRCS:.c=.o)
 
+CC = gcc 
+
+CFLAGS = -Wall -Wextra -Werror
+
+MEMORYFLAGS = -g3 -fsanitize=address
+
+
+
 .o: %.c
+	#$(CC) $(CFLAGS)  -c $< -o $@
 	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	make -C libft
+	#$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz libft/libft.a -o $(NAME)
+	$(CC) $(OBJ) $(MLXFLAGS) libft/libft.a -o $(NAME)
+	
+all: $(NAME)
+
+UNAME = $(shell uname -s)
+ifeq ($(UNAME), Linux)
+	NPROC := $(shell nproc)
+	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz 
+else
+	NPROC := $(shell sysctl -n hw.ncpu)
+	MLXFLAGS = -Lmlx_mac -framework OpenGL -framework Appkit
+
+endif
+
+clean:
+	make clean -C libft
+	/bin/rm -rf $(OBJ)
+
+fclean: clean
+	make fclean -C libft
+	rm -rf $(NAME)
+
+debug:	$(OBJ)
+		$(CC) $(OBJ) $(CFLAGS) $(MLXFLAGS) $(MEMORYFLAGS) libft/libft.a -o $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re debug
+
 
