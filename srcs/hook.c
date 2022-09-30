@@ -4,7 +4,11 @@ int	key_hook(int keycode, t_env *env)
 {
 	(void)env;
 	if (keycode == K_ESC)
-		return (quit_hook(env));
+	{
+		ft_putstr_fd("zooo still alive?\n", 1);
+		quit_hook(env);
+		return (1);
+	}
 	printf("keycode %i\n", keycode);
 	return (0);
 }
@@ -18,9 +22,14 @@ int	mouse_hook(int x, int y, t_env *env)
 
 int	quit_hook(t_env *env)
 {
-	mlx_destroy_image(env->mlx, env->mlx_win);
+	ft_putstr_fd("zooo still alive?\n", 1);
+	mlx_destroy_image(env->mlx, env->img->img);
+	ft_putstr_fd("zooo still alive?\n", 1);
 	mlx_destroy_window(env->mlx, env->mlx_win);
+	ft_putstr_fd("zooo still alive?\n", 1);
 	clear_env(env);
+	exit(0);
+	ft_putstr_fd("zooo still alive?\n", 1);
 	return (0);
 }
 

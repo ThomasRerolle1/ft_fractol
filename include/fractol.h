@@ -1,6 +1,6 @@
 # ifndef FRACTOL_H
 
-#include "../mlx_linux/mlx.h"
+#include "../mlx_mac/mlx.h"
 #include "../libft/libft.h"
 #include <stdio.h>
 #include <math.h>
@@ -143,7 +143,7 @@ int	mouse_hook(int x, int y, t_env *env);
 int	key_hook(int keycode, t_env *env);
 void	clear_img(t_img *img);
 void	clear_env(t_env *env);
-
+//int		main(void);
 
 # endif
 

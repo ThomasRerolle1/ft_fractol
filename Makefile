@@ -11,7 +11,7 @@ OBJ = $(SRCS:.c=.o)
 
 CC = gcc 
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 MEMORYFLAGS = -g3 -fsanitize=address
 
@@ -19,7 +19,7 @@ MEMORYFLAGS = -g3 -fsanitize=address
 
 .o: %.c
 	#$(CC) $(CFLAGS)  -c $< -o $@
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -Imlx_mac -c $< -o $@
 
 $(NAME): $(OBJ)
 	make -C libft
@@ -34,7 +34,7 @@ ifeq ($(UNAME), Linux)
 	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz 
 else
 	NPROC := $(shell sysctl -n hw.ncpu)
-	MLXFLAGS = -Lmlx_mac -framework OpenGL -framework Appkit
+	MLXFLAGS = -Lmlx_mac -lmlx -framework OpenGL -framework Appkit
 
 endif
 

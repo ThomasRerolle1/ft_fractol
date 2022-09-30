@@ -17,7 +17,7 @@ int	add_shade(double distance, int color)
 */
 
 #include "./include/fractol.h"
-/*
+
 int	main(int argc, char **argv)
 {
 	t_env	*env;
@@ -33,5 +33,3 @@ int	main(int argc, char **argv)
 	mlx_loop(env->mlx);
 	return (0);
 }
-
-*/
