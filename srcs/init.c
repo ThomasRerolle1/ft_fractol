@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: trerolle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/01 16:10:23 by trerolle          #+#    #+#             */
+/*   Updated: 2022/10/01 17:46:00 by trerolle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fractol.h"
 
 t_complex	*init_complex(t_env *env)
@@ -16,6 +28,8 @@ t_complex	*init_complex(t_env *env)
 	plan->x_abs = 4;
 	plan->y_max = 2;
 	plan->y_abs = 4;
+	plan->real_julia = 0.687;
+	plan->img_julia = 0.312;
 	return (plan);
 }
 
@@ -46,6 +60,7 @@ t_env	*init_env(int fractal_type)
 	env->img = init_img(env);
 	env->plan = init_complex(env);
 	env->fractal_type = fractal_type;
+	
 	return (env);
 }
 

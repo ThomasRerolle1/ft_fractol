@@ -45,8 +45,8 @@
 # define DARK_WHITE        0x696969
 
 /**********************SIZE_DEFINITION*************/
-# define WIN_WIDTH	1920
-# define WIN_HEIGHT	1080
+# define WIN_WIDTH	2000
+# define WIN_HEIGHT	1500
 /********************KEY_CODES**********************/
 # ifdef __gnu_linux__
 #  define K_ESC 65307
@@ -121,6 +121,9 @@ typedef struct s_complex{
 	double	y_max;
 	double	x_abs;
 	double	y_abs;
+	double	real_julia;
+	double	img_julia;
+
 }		t_complex;
 
 typedef struct	s_env{
@@ -129,14 +132,14 @@ typedef struct	s_env{
 	void	*mlx_win;
 	t_complex	*plan;
 	int	fractal_type;
-}		t_env;
+	}		t_env;
 
 /*********************FUNCTIONS_PROTOTYPES************/
 
 t_img	*init_img(t_env	*env);
 t_env	*init_env(int fractal_type);
 t_complex	*init_complex(t_env *env);
-t_env	*parse_args(char **argv);
+t_env	*parse_args(char **argv, int argc);
 int		list_hooks(t_env *env);
 int		quit_hook(t_env *env);
 int		mouse_hook(int x, int y, t_env *env);
@@ -147,7 +150,12 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		add_shade(double distance, int color);
 void	convert_win_to_graph(t_complex *plan, double x_win, double y_win);
 int		mandelbrot_set(t_complex *plan, double new_x, double new_y, int iterations);
-//int		main(void);
+void	put_color_to_fractal(t_env *env, int iterations, int x, int y);
+void	create_mandelbrot_set(t_env *env);
+int		julia_set(t_complex *plan, double new_x, double new_y, int iter);
+void	create_julia_set(t_env *env, char **argv, int argc);
+void	choose_fractal_set(t_env *env, int argc, char **argv);
+int		main(int argc, char **argv);
 
 # endif
 
