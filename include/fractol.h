@@ -45,8 +45,8 @@
 # define DARK_WHITE        0x696969
 
 /**********************SIZE_DEFINITION*************/
-# define WIN_WIDTH	1000
-# define WIN_HEIGHT	1000
+# define WIN_WIDTH	1920
+# define WIN_HEIGHT	1080
 /********************KEY_CODES**********************/
 # ifdef __gnu_linux__
 #  define K_ESC 65307
@@ -115,12 +115,12 @@ typedef struct	s_img {
 }		t_img;
 
 typedef struct s_complex{
-	float	x_img;
-	float	y_img;
-	float	x_max;
-	float	y_max;
-	float	x_abs;
-	float	y_abs;
+	double	x_img;
+	double	y_img;
+	double	x_max;
+	double	y_max;
+	double	x_abs;
+	double	y_abs;
 }		t_complex;
 
 typedef struct	s_env{
@@ -137,12 +137,16 @@ t_img	*init_img(t_env	*env);
 t_env	*init_env(int fractal_type);
 t_complex	*init_complex(t_env *env);
 t_env	*parse_args(char **argv);
-int	list_hooks(t_env *env);
-int	quit_hook(t_env *env);
-int	mouse_hook(int x, int y, t_env *env);
-int	key_hook(int keycode, t_env *env);
+int		list_hooks(t_env *env);
+int		quit_hook(t_env *env);
+int		mouse_hook(int x, int y, t_env *env);
+int		key_hook(int keycode, t_env *env);
 void	clear_img(t_img *img);
 void	clear_env(t_env *env);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int		add_shade(double distance, int color);
+void	convert_win_to_graph(t_complex *plan, double x_win, double y_win);
+int		mandelbrot_set(t_complex *plan, double new_x, double new_y, int iterations);
 //int		main(void);
 
 # endif

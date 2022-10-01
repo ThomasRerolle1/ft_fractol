@@ -5,7 +5,8 @@ SRCS = main.c\
        srcs/parse.c\
        srcs/hook.c\
        srcs/clear.c\
-       srcs/fractal.c
+       srcs/fractal.c\
+       srcs/colors.c
 
 OBJ = $(SRCS:.c=.o)
 
