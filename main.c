@@ -6,7 +6,7 @@
 /*   By: trerolle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:51:26 by trerolle          #+#    #+#             */
-/*   Updated: 2022/10/01 18:32:07 by trerolle         ###   ########.fr       */
+/*   Updated: 2022/10/02 14:35:25 by trerolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 void	choose_fractal_set(t_env *env, int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
 	if (env->fractal_type == 1)
 	{
 		create_mandelbrot_set(env);
@@ -27,47 +25,12 @@ void	choose_fractal_set(t_env *env, int argc, char **argv)
 	}
 }	
 
-void	put_color_to_fractal(t_env *env, int iterations, int x, int y)
+void	put_color_to_fractal(t_env *env, int i, int x, int y)
 {
-	if (iterations < 1)
-		return (my_mlx_pixel_put(env->img, x, y, RED));
-	if (iterations < 2)
-		return (my_mlx_pixel_put(env->img, x, y, BLUE));
-	if (iterations < 3)
-		return (my_mlx_pixel_put(env->img, x, y, GREEN));
-	if (iterations < 4)
-		return (my_mlx_pixel_put(env->img, x, y, YELLOW));
-	if (iterations < 5)
-		return (my_mlx_pixel_put(env->img, x, y, PURPLE));
-	if (iterations < 6)
-		return (my_mlx_pixel_put(env->img, x, y, CYAN));
-	if (iterations < 7)
-		return (my_mlx_pixel_put(env->img, x, y, RED));
-	if (iterations < 8)
-		return (my_mlx_pixel_put(env->img, x, y, BLUE));
-	if (iterations < 9)
-		return (my_mlx_pixel_put(env->img, x, y, GREEN));
-	if (iterations < 10)
-		return (my_mlx_pixel_put(env->img, x, y, YELLOW));
-	if (iterations < 11)
-		return (my_mlx_pixel_put(env->img, x, y, PURPLE));
-	if (iterations < 12)
-		return (my_mlx_pixel_put(env->img, x, y, CYAN));
-	if (iterations < 13)
-		return (my_mlx_pixel_put(env->img, x, y, RED));
-	if (iterations < 14)
-		return (my_mlx_pixel_put(env->img, x, y, BLUE));
-	if (iterations < 15)
-		return (my_mlx_pixel_put(env->img, x, y, GREEN));
-	if (iterations < 16)
-		return (my_mlx_pixel_put(env->img, x, y, YELLOW));
-	if (iterations < 17)
-		return (my_mlx_pixel_put(env->img, x, y, PURPLE));
-	if (iterations < 18)
-		return (my_mlx_pixel_put(env->img, x, y, CYAN));
-
-	if (iterations < 100)
-		return (my_mlx_pixel_put(env->img, x, y, DARK_BLUE));
+	if (i == 100)
+		return (my_mlx_pixel_put(env->img, x, y, 0));
+	i = 100 - i;
+	return (my_mlx_pixel_put(env->img, x, y, ((i << 1) + (i << 10) + (i << 8)) & 0xFFFFFF));
 }
 
 int	main(int argc, char **argv)

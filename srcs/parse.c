@@ -6,7 +6,7 @@
 /*   By: trerolle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:10:26 by trerolle          #+#    #+#             */
-/*   Updated: 2022/10/01 17:05:29 by trerolle         ###   ########.fr       */
+/*   Updated: 2022/10/02 13:46:53 by trerolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_env	*parse_args(char **argv, int argc)
 {
 	int	i;
-	int	j;
+	//int	j;
 
 
 	i = 2;
@@ -24,7 +24,7 @@ t_env	*parse_args(char **argv, int argc)
 		printf("Too many arguments");
 		exit(0);
 	}
-	while (argv[i])
+	/*while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
@@ -37,7 +37,7 @@ t_env	*parse_args(char **argv, int argc)
 			j++;
 		}
 		i++;
-	}
+	}*/
 	if (ft_strncmp(argv[1], "mandelbrot", ft_strlen("mandelbrot")) == 0 && argc == 2)
 		return (init_env(1));
 	if (ft_strncmp(argv[1], "julia", ft_strlen("julia")) == 0)

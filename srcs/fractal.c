@@ -6,7 +6,7 @@
 /*   By: trerolle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:17:58 by trerolle          #+#    #+#             */
-/*   Updated: 2022/10/01 18:29:07 by trerolle         ###   ########.fr       */
+/*   Updated: 2022/10/02 14:20:37 by trerolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	create_julia_set(t_env *env, char **argv, int argc)
 		env->plan->real_julia = ft_atoi(argv[2]);
 	if (argc == 4)
 		env->plan->img_julia = ft_atoi(argv[3]);
+	
+	printf("%f, %f\n", env->plan->real_julia, env->plan->img_julia);
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;

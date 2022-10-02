@@ -150,7 +150,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		add_shade(double distance, int color);
 void	convert_win_to_graph(t_complex *plan, double x_win, double y_win);
 int		mandelbrot_set(t_complex *plan, double new_x, double new_y, int iterations);
-void	put_color_to_fractal(t_env *env, int iterations, int x, int y);
+void	put_color_to_fractal(t_env *env, int i, int x, int y);
 void	create_mandelbrot_set(t_env *env);
 int		julia_set(t_complex *plan, double new_x, double new_y, int iter);
 void	create_julia_set(t_env *env, char **argv, int argc);
