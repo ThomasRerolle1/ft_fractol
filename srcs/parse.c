@@ -6,7 +6,7 @@
 /*   By: trerolle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:10:26 by trerolle          #+#    #+#             */
-/*   Updated: 2022/10/02 13:46:53 by trerolle         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:30:12 by trerolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,21 @@ t_env	*parse_args(char **argv, int argc)
 
 
 	i = 2;
-	if (argc > 4)
+	if (argc > 2)
 	{
-		printf("Too many arguments");
+		ft_putstr_fd("Wrong input\nUsage /fractol \"mandelbrot (-M)\", \"julia (-J)\"", 1);
 		exit(0);
 	}
-	/*while (argv[i])
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-			{
-				printf("%s must be a number", argv[i]);
-				exit(0);
-			}
-			j++;
-		}
-		i++;
-	}*/
-	if (ft_strncmp(argv[1], "mandelbrot", ft_strlen("mandelbrot")) == 0 && argc == 2)
+	if (ft_strncmp(argv[1], "mandelbrot", 11) == 0 || ft_strncmp(argv[1], "-M", 3) == 0)
 		return (init_env(1));
-	if (ft_strncmp(argv[1], "julia", ft_strlen("julia")) == 0)
+	if (ft_strncmp(argv[1], "julia", 6) == 0 || ft_strncmp(argv[1], "-J", 3) == 0)
 		return (init_env(2));
-	printf("%s is not a valid argument\nPlease choose between Mandelbrot and Julia", argv[1]);
+	ft_putstr_fd("Wrong input\nUsage /fractol \"mandelbrot (-M)\", \"julia (-J)\"", 1);
 	exit(0);
 }
+
+//void	ft_atof()
+
 /*
 void	choose_fractal_set(t_env *env, int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: trerolle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:10:12 by trerolle          #+#    #+#             */
-/*   Updated: 2022/10/01 16:30:20 by trerolle         ###   ########.fr       */
+/*   Updated: 2022/10/02 18:18:52 by trerolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ void	clear_img(t_img *img)
 	{
 		free(img);
 		img = NULL;
+	}
+}
+
+void	clear_complex(t_complex *plan)
+{
+	if (plan)
+	{
+		free(plan);
+		plan = NULL;
 	}
 }
 

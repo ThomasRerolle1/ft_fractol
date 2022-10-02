@@ -6,7 +6,7 @@
 /*   By: trerolle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:10:23 by trerolle          #+#    #+#             */
-/*   Updated: 2022/10/02 14:15:15 by trerolle         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:16:22 by trerolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_complex	*init_complex(t_env *env)
 		clear_env(env);
 		exit(1);
 	}
+	plan->x_origin = 0;
+	plan->y_origin = 0;
 	plan->x_img = 0;
 	plan->y_img = 0;
 	plan->x_max = 2;

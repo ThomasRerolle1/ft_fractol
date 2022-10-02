@@ -6,11 +6,11 @@ SRCS = main.c\
        srcs/hook.c\
        srcs/clear.c\
        srcs/fractal.c\
-       srcs/colors.c
+       srcs/colors.c\
 
 OBJ = $(SRCS:.c=.o)
 
-CC = gcc 
+CC = clang 
 
 CFLAGS = -Wall -Wextra -Werror -g
 
@@ -27,7 +27,7 @@ $(NAME): $(OBJ)
 	#$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz libft/libft.a -o $(NAME)
 	$(CC) $(OBJ) $(MLXFLAGS) libft/libft.a -o $(NAME)
 	
-all: $(NAME)
+all: ${NAME}
 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)

@@ -115,6 +115,8 @@ typedef struct	s_img {
 }		t_img;
 
 typedef struct s_complex{
+	double	x_origin;
+	double	y_origin;
 	double	x_img;
 	double	y_img;
 	double	x_max;
@@ -142,9 +144,11 @@ t_complex	*init_complex(t_env *env);
 t_env	*parse_args(char **argv, int argc);
 int		list_hooks(t_env *env);
 int		quit_hook(t_env *env);
-int		mouse_hook(int x, int y, t_env *env);
+int		mouse_hook(int keycode, int x, int y, t_env *env);
+int		scroll_up(t_env *env);
 int		key_hook(int keycode, t_env *env);
 void	clear_img(t_img *img);
+void	clear_complex(t_complex *plan);
 void	clear_env(t_env *env);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		add_shade(double distance, int color);
@@ -155,7 +159,9 @@ void	create_mandelbrot_set(t_env *env);
 int		julia_set(t_complex *plan, double new_x, double new_y, int iter);
 void	create_julia_set(t_env *env, char **argv, int argc);
 void	choose_fractal_set(t_env *env, int argc, char **argv);
+void	create_set(t_env *env);
 int		main(int argc, char **argv);
+//int		mlx_scroll_up_hook(int keycode, int x, int y, t_env *env);
 
 # endif
 
