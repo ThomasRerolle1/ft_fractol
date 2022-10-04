@@ -6,7 +6,7 @@
 /*   By: trerolle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:17:58 by trerolle          #+#    #+#             */
-/*   Updated: 2022/10/02 17:04:33 by trerolle         ###   ########.fr       */
+/*   Updated: 2022/10/03 20:01:10 by trerolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	convert_win_to_graph(t_complex *plan, double x_win, double y_win)
 {
 	plan->x_img = (x_win / WIN_WIDTH) * plan->x_abs - plan->x_max;
 	plan->y_img = -((y_win / WIN_HEIGHT) * plan->y_abs - plan->y_max);
-	//printf("r plan = %f, i plan = %f\n", plan->x_img, plan->y_img);
 }
 
 int	mandelbrot_set(t_complex *plan, double new_x, double new_y, int iterations)
@@ -62,9 +61,11 @@ void	create_set(t_env *env)
 		{
 			convert_win_to_graph(env->plan, (double)x, (double)y);
 			if (env->fractal_type == 1)
-				put_color_to_fractal(env, mandelbrot_set(env->plan, 0, 0, 0), x, y);
+				put_color_to_fractal(env, mandelbrot_set(env->plan, 0, 0, 0),
+					x, y);
 			else
-				put_color_to_fractal(env, julia_set(env->plan, env->plan->x_img, env->plan->y_img, 0), x, y);
+				put_color_to_fractal(env, julia_set(env->plan, env->plan->x_img,
+						env->plan->y_img, 0), x, y);
 			x++;
 		}
 		y++;

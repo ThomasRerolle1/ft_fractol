@@ -6,7 +6,7 @@
 /*   By: trerolle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:10:26 by trerolle          #+#    #+#             */
-/*   Updated: 2022/10/02 15:30:12 by trerolle         ###   ########.fr       */
+/*   Updated: 2022/10/03 20:06:20 by trerolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 t_env	*parse_args(char **argv, int argc)
 {
 	int	i;
-	//int	j;
-
 
 	i = 2;
 	if (argc > 2)
 	{
-		ft_putstr_fd("Wrong input\nUsage /fractol \"mandelbrot (-M)\", \"julia (-J)\"", 1);
+		ft_putstr_fd("Usage /fractol \"mandelbrot (-M)\", \"julia (-J)\"", 1);
 		exit(0);
 	}
-	if (ft_strncmp(argv[1], "mandelbrot", 11) == 0 || ft_strncmp(argv[1], "-M", 3) == 0)
+	if (ft_strncmp(argv[1], "mandelbrot", 11) == 0
+		|| ft_strncmp(argv[1], "-M", 3) == 0)
 		return (init_env(1));
-	if (ft_strncmp(argv[1], "julia", 6) == 0 || ft_strncmp(argv[1], "-J", 3) == 0)
+	if (ft_strncmp(argv[1], "julia", 6) == 0
+		|| ft_strncmp(argv[1], "-J", 3) == 0)
 		return (init_env(2));
-	ft_putstr_fd("Wrong input\nUsage /fractol \"mandelbrot (-M)\", \"julia (-J)\"", 1);
+	ft_putstr_fd("Usage /fractol \"mandelbrot (-M)\", \"julia (-J)\"", 1);
 	exit(0);
 }
 
